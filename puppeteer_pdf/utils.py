@@ -71,10 +71,11 @@ def puppeteer_to_pdf(input, output=None, **kwargs):
     # Default options:
     options = getattr(settings, 'PUPPETEER_PDF_CMD_OPTIONS', None)
     if options is None:
-        options = {'path': output}
+        options = {}
     else:
         options = copy(options)
     options.update(kwargs)
+    options['path'] = output
 
     cmd = 'PUPPETEER_PDF_CMD'
     CHROME_LOCATION = 'puppeteer-pdf'  # default
